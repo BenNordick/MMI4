@@ -40,26 +40,26 @@ JC2_DM: C2 -> R_2; a_2 * C2
 JC2_D2: C2 -> R_M; b_2 * gm_2 * C2
 
 JC11_DM: C11 -> 2 R_1; a_11 * C11
-JC11_D1: C11 -> C1; b_11 * gm_1 * C11
+JC11_D1: C11 -> C1; 2 * b_11 * gm_1 * C11
 
 JC22_DM: C22 -> 2 R_2; a_22 * C22
-JC22_D2: C22 -> C2; b_22 * gm_2 * C22
+JC22_D2: C22 -> C2; 2 * b_22 * gm_2 * C22
 
 JC12_DM: C12 -> R_1 + R_2; a_12 * C12
 JC12_D1: C12 -> C2; b_12_1 * gm_1 * C12
 JC12_D2: C12 -> C1; b_12_2 * gm_2 * C12
 
 JC112_DM: C112 -> 2 R_1 + R_2; a_112 * C112
-JC112_D1: C112 -> C12; b_112_1 * gm_1 * C112
+JC112_D1: C112 -> C12; 2 * b_112_1 * gm_1 * C112
 JC112_D2: C112 -> C11; b_112_2 * gm_2 * C112
 
 JC122_DM: C122 -> R_1 + 2 R_2; a_122 * C122
 JC122_D1: C122 -> C22; b_122_1 * gm_1 * C122
-JC122_D2: C122 -> C12; b_122_2 * gm_2 * C122
+JC122_D2: C122 -> C12; 2 * b_122_2 * gm_2 * C122
 
 JC1122_DM: C1122 -> 2 R_1 + 2 R_2; a_1122 * C1122
-JC1122_D1: C1122 -> C122; b_1122_1 * gm_1 * C1122
-JC1122_D2: C1122 -> C112; b_1122_2 * gm_2 * C1122
+JC1122_D1: C1122 -> C122; 2 * b_1122_1 * gm_1 * C1122
+JC1122_D2: C1122 -> C112; 2 * b_1122_2 * gm_2 * C1122
 
 R_M = 1; R_1 = 0.1; R_2 = 0.1
 C1 = 0; C2 = 0; C11 = 0; C22 = 0
@@ -111,15 +111,15 @@ while len(results) < args.count:
         pset['a_122'] = min(max(pset['a_1'], pset['a_22']) * 2 ** np.random.uniform(0, 2), 32)
         pset['a_1122'] = min(max(pset['a_11'], pset['a_22']) * 2 ** np.random.uniform(0, 1), 32)
         pset['b_1'] = 2 ** np.random.uniform(-2, 0)
-        pset['b_11'] = pset['b_1'] * 2 ** np.random.uniform(-2, 0)
+        pset['b_11'] = pset['b_1'] * 2 ** np.random.uniform(-3, 0)
         pset['b_2'] = 2 ** np.random.uniform(-2, 0)
-        pset['b_22'] = pset['b_2'] * 2 ** np.random.uniform(-2, 0)
+        pset['b_22'] = pset['b_2'] * 2 ** np.random.uniform(-3, 0)
         pset['b_12_1'] = min(pset['b_1'] * 2 ** np.random.uniform(-1, 1), 1)
         pset['b_12_2'] = min(pset['b_2'] * 2 ** np.random.uniform(-1, 1), 1)
         pset['b_112_1'] = min(pset['b_11'] * 2 ** np.random.uniform(-1, 1), 1)
         pset['b_112_2'] = min(pset['b_2'] * 2 ** np.random.uniform(-1, 1), 1)
-        pset['b_122_1'] = min(pset['b_22'] * 2 ** np.random.uniform(-1, 1), 1)
-        pset['b_122_2'] = min(pset['b_1'] * 2 ** np.random.uniform(-1, 1), 1)
+        pset['b_122_1'] = min(pset['b_1'] * 2 ** np.random.uniform(-1, 1), 1)
+        pset['b_122_2'] = min(pset['b_22'] * 2 ** np.random.uniform(-1, 1), 1)
         pset['b_1122_1'] = max(min(pset['b_112_1'] * 2 ** np.random.uniform(-1, 1), 1), 1/32)
         pset['b_1122_2'] = max(min(pset['b_122_2'] * 2 ** np.random.uniform(-1, 1), 1), 1/32)
     for mi in ['1', '2']:
