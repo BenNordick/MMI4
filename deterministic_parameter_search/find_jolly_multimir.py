@@ -42,7 +42,7 @@ JCZ21:      C_ZEB_2 + R_101 -> C_ZEB_12;    kOn_ZEB_101 * C_ZEB_2 * R_101 - kOff
 JCZ12DR:    C_ZEB_12 -> R_101 + R_200;      dR_ZEB * a_ZEB_12 * C_ZEB_12
 JCZ12DI1:   C_ZEB_12 -> C_ZEB_2;            d_101 * b_101_ZEB_12 * C_ZEB_12
 JCZ12DI2:   C_ZEB_12 -> C_ZEB_1;            d_200 * b_200_ZEB_12 * C_ZEB_12
-JCZ122:     C_ZEB_12 + R_200 -> C_ZEB_122;  kOn_ZEB_200 * C_ZEB_12 * R_200 - kOff * C_ZEB_122
+JCZ122:     C_ZEB_12 + R_200 -> C_ZEB_122;  kOn_ZEB_200 * C_ZEB_12 * R_200 - 2 * kOff * C_ZEB_122
 JCZ221:     C_ZEB_22 + R_101 -> C_ZEB_122;  kOn_ZEB_101 * C_ZEB_22 * R_101 - kOff * C_ZEB_122
 JCZ122DR:   C_ZEB_122 -> R_101 + 2 R_200;   dR_ZEB * a_ZEB_122 * C_ZEB_122
 JCZ122DI1:  C_ZEB_122 -> C_ZEB_22;          d_101 * b_101_ZEB_122 * C_ZEB_122
