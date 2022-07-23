@@ -17,8 +17,6 @@ last_runner = None
 def run_bifurcation(runner: roadrunner.RoadRunner, param_name, param_limits, **kwargs):
     global last_bif_diagram, last_runner
     need_fort8 = len(runner.fs()) > 6
-    if need_fort8:
-        warnings.warn('Extra columns NYI')
     auto.setProperty('SBML', runner.getCurrentSBML())
     auto.setProperty('PreSimulation', False)
     auto.setProperty('ScanDirection', 'Positive')

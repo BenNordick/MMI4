@@ -65,6 +65,8 @@ ini_combs[:, protein_col] = runner['l_ZEB1'] * ini_combs[:, mrna_col]
 attractors = multiattractor.findpointattractors(runner, ini_combs)
 print(multiattractor.pointattractorsdf(runner, attractors))
 
+### MRNA TRANSCRIPTION RATE
+
 bi_diagram = bifurcation.run_bifurcation(runner, 'k_ZEB1', (0.001, 20), ScanDirection='Negative')
 regions = bifurcation.region_attractor_counts(bi_diagram)
 
@@ -83,4 +85,29 @@ axs[0].set_ylabel('Protein (AU)')
 axs[1].set_ylabel('microRNA (AU)')
 fig.tight_layout()
 fig.savefig('images/bif_mmi2_mirep.svg')
+print(regions)
+
+### MICRORNA DEGRADATION RATE
+
+### DEGRADATION RATE
+
+runner['k_ZEB1'] = 0.9
+
+bi_diagram = bifurcation.run_bifurcation(runner, 'gm', (0.001, 20), ScanDirection='Negative')
+regions = bifurcation.region_attractor_counts(bi_diagram)
+
+fig, axs = plt.subplots(ncols=2, sharex=True, figsize=(5, 3))
+bifurcation.plot_split_bifurcation_diagram(runner, bi_diagram, ['X_ZEB1', 'miRNA'], axs, ['tab:blue', 'tab:green', 'tab:orange'])
+for ax in axs:
+    ax.set_yscale('log')
+    ax.set_ylim(top=5, bottom=1e-6)
+    ax.set_xlim(left=0.5, right=1.5)
+    ax.set_xlabel(R'$\gamma$', fontsize=14)
+    ax.xaxis.set_minor_locator(mpltick.MultipleLocator(0.05))
+    ax.yaxis.set_minor_locator(mpltick.LogLocator(base=10, numticks=10))
+    ax.yaxis.set_minor_formatter(mpltick.NullFormatter())
+axs[0].set_ylabel('Protein (AU)')
+axs[1].set_ylabel('microRNA (AU)')
+fig.tight_layout()
+fig.savefig('images/bif_mmi2_mirep_deg.svg')
 print(regions)
