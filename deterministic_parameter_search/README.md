@@ -13,3 +13,5 @@ These scripts (for CPython 3.8.5) find example multistable parameter sets for th
 * Subbalakshmi *et al.* 2021 with MMI2 and miR-101: `find_jolly_multimir.py` (find multistable parameters) and `plot_jolly_multimir.py` (plot with E-cadherin readout)
 
 Parameterizations of other models can be plotted with `plotsystems.py`.
+
+Single-parameter sensitivity of discovered example parameter sets can be computed with `sensitivity.py` and plotted with `plotsensitivity.py`.
