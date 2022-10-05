@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 filea = "A549.csv" #GSE147405 Cook and Vanderhyden 2020
-filea = "MCF10A.csv" #GSE200941 Panchy et al. 2022
+filea = "MCF10A.csv" #GSE213753 Panchy et al. 2022
 dfa = pd.read_csv(filea, index_col=0)
 dfa['200b_d'] = dfa.TS_200b - dfa.background
 dfa['101p1_d'] = dfa.TS_101p1 - dfa.background
